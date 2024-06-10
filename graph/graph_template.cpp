@@ -8,5 +8,4 @@ template<typename T>struct edge{
     }
     operator ll() const {return to;}
 };
-template<typename T>using edges = vector<edge<T>>;
-template<typename T>using graph = vector<edges<T>>;
+template<typename T>using graph = vector<vector<edge<T>>>;
