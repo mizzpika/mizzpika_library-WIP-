@@ -1,2 +1,2 @@
-# mizzpika-s-library
+# mizzpika_library
 mizzpikaのライブラリ
