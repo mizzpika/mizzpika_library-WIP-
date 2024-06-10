@@ -1,5 +1,5 @@
 //配列の累積和を1-indexedで求める
-template<class T> vector<T> cumulative_sum(vector<T> &v){
+template<typename T> vector<T> cumulative_sum(vector<T> &v){
     ll n = v.size();
     vector<T> res(n + 1);
     for(ll i = 0; i < n; ++i){
