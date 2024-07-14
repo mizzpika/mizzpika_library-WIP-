@@ -1,26 +1,26 @@
 //dijkstra
 struct dijkstra{
-    vector<ll> dis;
+    vector<ll> dist;
     vector<ll> prev;
 
     //dijkstraを構築
     dijkstra(Graph &G, ll s){
         ll N = G.size();
-        dis.assign(N, 1LL << 60);
+        dist.assign(N, 1LL << 60);
         prev.assign(N, -1);
         priority_queue<pair<ll, ll>, vector<pair<ll, ll>>, greater<pair<ll, ll>>> pq;
-        dis[s] = 0;
-        pq.emplace(dis[s], s);
+        dist[s] = 0;
+        pq.emplace(dist[s], s);
         while (!pq.empty()){
             auto p = pq.top();
             pq.pop();
             ll v = p.second;
-            if(dis[v] < p.first)continue;
+            if(dist[v] < p.first)continue;
             for (auto &e : G[v]){
-                if (dis[e.to] > dis[v] + e.cost){
-                    dis[e.to] = dis[v] + e.cost;
+                if (dist[e.to] > dist[v] + e.cost){
+                    dist[e.to] = dist[v] + e.cost;
                     prev[e.to] = v;
-                    pq.emplace(dis[e.to], e.to);
+                    pq.emplace(dist[e.to], e.to);
                 }
             }
         }
@@ -28,7 +28,7 @@ struct dijkstra{
 
     //最小コストを求める
     ll get_cost(ll to){
-        return dis[to];
+        return dist[to];
     }
     
     //最短経路を求める
@@ -39,5 +39,10 @@ struct dijkstra{
         }
         reverse(get_path.begin(), get_path.end());
         return get_path;
+    }
+
+    //到達可能か調べる
+    bool cango(ll to){
+        return dist[to] != 1LL << 60;
     }
 };
