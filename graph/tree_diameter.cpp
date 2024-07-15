@@ -14,7 +14,7 @@ ll tree_diameter(Graph g){
     ll mx2 = 0;
     for(ll i = 0; i < n; i++){
         if(mx2 < d2.get_cost(i)){
-            mx2 = d.get_cost(i);
+            mx2 = d2.get_cost(i);
         }
     }
 
