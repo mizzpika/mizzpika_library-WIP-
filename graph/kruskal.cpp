@@ -1,11 +1,35 @@
-template<typename T>T kruskal(Edges<T> &edges, int V){
-    sort(begin(edges), end(edges), [](const edge<T> &a, const edge<T> &b){
-        return(a.cost < b.cost);
-    });
-    UnionFind tree(V);
-    T ret = 0;
-    for(auto &e : edges){
-        if(tree.unite(e.src, e.to))ret += e.cost;
+struct kruskal{
+    ll n;
+    vector<Edge2> edges;
+    //kruskalの構築
+    kruskal(Graph &g){
+        n = g.size();
+        for(ll i = 0; i < n; i++){
+            for(auto e : g[i]){
+                edges.emplace_back(i, e.to, e.cost);
+            }
+        }
     }
-    return(ret);
-}
+
+    //最小全域木のコストを求める
+    ll get_mincost(){
+        sort(edges.begin(), edges.end());
+        UnionFind uf(n);
+        ll ret = 0;
+        for(auto e : edges){
+            if(uf.unite(e.from, e.to))ret += e.cost;
+        }
+        return ret;
+    }
+
+    //最大全域木のコストを求める
+    ll get_maxcost(){
+        sort(edges.rbegin(), edges.rend());
+        UnionFind uf(n);
+        ll ret = 0;
+        for(auto e : edges){
+            if(uf.unite(e.from, e.to))ret += e.cost;
+        }
+        return ret;
+    }
+};
