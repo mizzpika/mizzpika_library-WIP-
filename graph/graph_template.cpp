@@ -6,6 +6,22 @@ struct Edge{
     bool operator>(const Edge &e) const{
         return cost > e.cost;
     }
+    bool operator<(const Edge &e) const{
+        return cost < e.cost;
+    }
+};
+
+struct Edge2{
+    ll from;
+    ll to;
+    ll cost;
+    Edge2(ll from, ll to, ll cost) : from(from), to(to), cost(cost) {}
+    bool operator>(const Edge2 &e) const{
+        return cost > e.cost;
+    }
+    bool operator<(const Edge2 &e) const{
+        return cost < e.cost;
+    }
 };
 
 struct Graph{
