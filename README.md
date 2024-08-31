@@ -1,3 +1,2 @@
 # mizzpika_library
 mizzpikaのライブラリ
-graphは気合を入れて作っています
